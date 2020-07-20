@@ -21,16 +21,12 @@ $root=$_SERVER["DOCUMENT_ROOT"];
 return $root;    
 }
 
-?>
 
 
-<?php 
 // ------------------- Funciones Comunes -------------
 // -- FUNCIONES DE MANEJO DE DATOS --
-?>
 
 
-<?php
 function limpia_texto($string) {
     $filtro = '-1234567890abcdefghijklmnopqrstuvwxyz -.ABCDEFGHIJKLMNOPQRSTUVWXYZáéíóúÁÉÍÓÚ';
     $length = strlen($string);
@@ -42,15 +38,13 @@ function limpia_texto($string) {
     }
     return $stringfiltrado;
 } 
-?>
 
 
-
-<?php
 function alerta($mensaje) {  //---- Emite mensaje
 echo '<script Language="javaScript">alert("'.$mensaje.'");</script> ';
 }
 
+    
 function limpiar_cadena($string) {
 $string = ereg_reemplaza($string);
 return $string;
@@ -69,10 +63,9 @@ function ereg_reemplaza($string) {
     }
     return $stringfiltrado;
 } 
-?>
 
     
-<?php      
+  
 function ereg_filtrar($filtro,$string) {
     $length = strlen($string);
     $stringfiltrado='';
@@ -83,11 +76,10 @@ function ereg_filtrar($filtro,$string) {
     }
     return $stringfiltrado;
 } 
-?>       
         
 
-<?php          
-function Leer_de_Disco($path) {    //-- $path="https://www.elsitio/elpat/file.txt";
+      
+function leer_de_disco($path) {    //-- $path="https://www.elsitio/elpat/file.txt";
 $ch = curl_init();
 $timeout = 0; // set to zero for no timeout
 curl_setopt ($ch, CURLOPT_URL, "$path" );
@@ -97,19 +89,16 @@ $contenidodelarchivo = curl_exec($ch);
 curl_close($ch);
 return $contenidodelarchivo;
 }
-?>
                              
 
-<?php
+
 function grabar_a_disco($txt,$path) {  //$path="/home1/hostgator/public_html/sitio/file.txt";
 $file = fopen($path, "w");
 fwrite($file, $txt . PHP_EOL);
 fclose($file);
 }
-?>
                                                                                                                      
                                                                      
-<?php
 function generaRandomString($length) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
@@ -296,12 +285,7 @@ return $extension;
 }
 
 
-    
-    
-    
-
 //--- Funciones de IP
-    
     
 function ip_real() {
     $ip = $_SERVER['REMOTE_ADDR'];
@@ -309,8 +293,7 @@ function ip_real() {
 }
 
 
-<?php
-function macdetect()
+function detect_so()
 {
   $browser=array("IE","OPERA","MOZILLA","NETSCAPE","FIREFOX","SAFARI","CHROME");
   $os=array("WIN","MAC","LINUX","ANDROID");
@@ -344,6 +327,41 @@ function macdetect()
   return $SistemaOperativo;
 }
 
+
+function detect_navegador()
+{
+  $browser=array("IE","OPERA","MOZILLA","NETSCAPE","FIREFOX","SAFARI","CHROME");
+  $os=array("WIN","MAC","LINUX","ANDROID");
+  # definimos unos valores por defecto para el navegador y el sistema operativo
+  $info['browser'] = "OTHER";
+  $info['os'] = "OTHER";
+
+  # buscamos el navegador con su sistema operativo
+  foreach($browser as $parent)
+  {
+    $s = strpos(strtoupper($_SERVER['HTTP_USER_AGENT']), $parent);
+    $f = $s + strlen($parent);
+    $version = substr($_SERVER['HTTP_USER_AGENT'], $f, 15);
+    $version = preg_replace('/[^0-9,.]/','',$version);
+    if ($s)
+    {
+      $info['browser'] = $parent;
+      $info['version'] = $version;
+    }
+  }
+
+  # obtenemos el sistema operativo
+  foreach($os as $val)
+  {
+    if (strpos(strtoupper($_SERVER['HTTP_USER_AGENT']),$val)!==false)
+      $info['os'] = $val;
+  }
+  # devolvemos el array de valores
+  # return $info; 
+  $navegador=substr($info["browser"], 0,1);
+  return $navegador;
+}
+    
     
     
 function ancho_pantalla() {
