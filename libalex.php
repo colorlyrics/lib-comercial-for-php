@@ -51,7 +51,7 @@ function alerta($mensaje) {  //---- Emite mensaje
 echo '<script Language="javaScript">alert("'.$mensaje.'");</script> ';
 }
 
-function LIMPIAR_CADENA($string) {
+function limpiar_cadena($string) {
 $string = ereg_reemplaza($string);
 return $string;
 }
@@ -101,7 +101,7 @@ return $contenidodelarchivo;
                              
 
 <?php
-function Grabar_a_Disco($txt,$path) {  //$path="/home1/hostgator/public_html/sitio/file.txt";
+function grabar_a_disco($txt,$path) {  //$path="/home1/hostgator/public_html/sitio/file.txt";
 $file = fopen($path, "w");
 fwrite($file, $txt . PHP_EOL);
 fclose($file);
@@ -143,7 +143,7 @@ return($t);
 
 //--- FUNCIONES NUMERICAS COMUNES
 
-function IS_PAR($numero) {
+function is_par($numero) {
 if ($numero%2==0) // Vemos si 54 dividido en 2 da resto 0 si lo da
    { return true; } //escribo Par
 else //Sino
@@ -166,7 +166,7 @@ return $cFECHA;
 }
 
     
-function FECHA_HACE($date2) {
+function fecha_hace($date2) {
 $date1 = time();
 $subTime = $date1 - $date2;
 $y = ($subTime/(60*60*24*365));
@@ -247,7 +247,7 @@ function solonumeros($string) {
 } 
 
 
-function VALIDAR_EMAIL($email) {
+function validar_email($email) {
 $emailok=1;
 //--- validar mail en blanco
 if (strlen($email)==0) { $emailok=0; }
@@ -266,7 +266,7 @@ return $emailok;
 }
 
 
-function VALIDAR_TELEFONO($a) {
+function validar_telefono($a) {
 //echo "<br>valor inicial=".strlen($a);  
 if (strlen($a)==0) {
     echo "fono en blanco";
@@ -283,13 +283,13 @@ return 1;
 }
 
 
-function REPLA_ESPACIO($string) {
+function repla_espacio($string) {
 $limpio= str_replace(' ', '%20', $string);
 return $limpio;
 }
 
 
-function EXTENSION_FOTO($LINKFOTO) {
+function extension_foto($LINKFOTO) {
 $trozos = explode(".", $LINKFOTO); 
 $extension = end($trozos);
 return $extension;  
@@ -303,7 +303,7 @@ return $extension;
 //--- Funciones de IP
     
     
-function IP_REAL() {
+function ip_real() {
     $ip = $_SERVER['REMOTE_ADDR'];
     return $ip;
 }
@@ -361,7 +361,7 @@ return $ancho;
 
     
     
-function SINO($mensaje,$linkborrar,$linkvolver) {
+function sino($mensaje,$linkborrar,$linkvolver) {
 ?>
   <div class="w3-card-4 w3-blue-grey" style="width:50%; margin-left:25%; margin-top:15%;">
     <div class="w3-container w3-center">
@@ -380,7 +380,7 @@ function SINO($mensaje,$linkborrar,$linkvolver) {
       
 
 <?php
-function MENSAJEOK($mensaje,$link) {
+function mensajeok($mensaje,$link) {
 ?>
   <div class="w3-card-4 w3-blue-grey" style="width:50%; margin-left:25%; margin-top:15%;">
     <div class="w3-container w3-center">
